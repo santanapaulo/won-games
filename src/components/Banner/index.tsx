@@ -1,4 +1,6 @@
 import Button from 'components/Button';
+
+import { RibbonProps } from 'components/Ribbon';
 import * as S from './styles';
 
 export type BannerProps = {
@@ -7,6 +9,7 @@ export type BannerProps = {
   subtitle: string;
   buttonLabel: string;
   buttonLink: string;
+  RibbonComponent?: React.ReactElement<RibbonProps>;
 };
 
 const Banner = ({
@@ -15,8 +18,10 @@ const Banner = ({
   subtitle,
   buttonLabel,
   buttonLink,
+  RibbonComponent,
 }: BannerProps) => (
   <S.Wrapper>
+    {!!RibbonComponent && RibbonComponent}
     <S.Image src={img} role="img" aria-label={title} />
 
     <S.Caption>

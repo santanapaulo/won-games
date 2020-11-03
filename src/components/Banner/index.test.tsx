@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react';
+import Ribbon from 'components/Ribbon';
 import { renderWithTheme } from 'utils/tests/helpers';
 
 import Banner from '.';
@@ -28,5 +29,27 @@ describe('<Banner />', () => {
     ).toBeInTheDocument();
 
     expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should render a Ribbon', () => {
+    renderWithTheme(
+      <Banner
+        {...props}
+        RibbonComponent={
+          <Ribbon size="small" color="secondary">
+            My Ribbon
+          </Ribbon>
+        }
+      />,
+    );
+
+    const ribbon = screen.getByText(/My Ribbon/i);
+
+    expect(ribbon).toBeInTheDocument();
+    expect(ribbon).toHaveStyle({ backgroundColor: '#3CD3C1' });
+    expect(ribbon).toHaveStyle({
+      height: '2.6rem',
+      fontSize: '1.2rem',
+    });
   });
 });
