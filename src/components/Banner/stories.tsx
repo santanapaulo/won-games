@@ -6,8 +6,8 @@ export default {
   title: 'Banner',
   component: Banner,
   argTypes: {
-    ribbon: {
-      type: 'string',
+    RibbonComponent: {
+      type: '',
     },
   },
   args: {
