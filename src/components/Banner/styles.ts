@@ -8,7 +8,7 @@ export const Wrapper = styled.main`
   ${media.lessThan('large')`
     ${RibbonStyles.Wrapper} {
       right: 0;
-      &::after {
+      &::before {
         display: none;
       }
     }

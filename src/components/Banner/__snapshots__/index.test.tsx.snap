@@ -73,7 +73,7 @@ exports[`<Banner /> should render correctly 1`] = `
     right: 0;
   }
 
-  .c0 .sc-AxjAm::after {
+  .c0 .sc-AxjAm::before {
     display: none;
   }
 }

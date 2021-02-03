@@ -1,13 +1,12 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
-import Ribbon from 'components/Ribbon';
 import Banner, { BannerProps } from '.';
 
 export default {
   title: 'Banner',
   component: Banner,
   argTypes: {
-    RibbonComponent: {
-      type: '',
+    ribbon: {
+      type: 'string',
     },
   },
   args: {
@@ -35,9 +34,7 @@ export const WithRibbon: Story<BannerProps> = (args) => (
 );
 
 WithRibbon.args = {
-  RibbonComponent: (
-    <Ribbon size="small" color="secondary">
-      My Ribbon
-    </Ribbon>
-  ),
+  ribbon: '20% OFF',
+  ribbonSize: 'normal',
+  ribbonColor: 'primary',
 };

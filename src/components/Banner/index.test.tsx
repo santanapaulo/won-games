@@ -1,5 +1,4 @@
 import { screen } from '@testing-library/react';
-import Ribbon from 'components/Ribbon';
 import { renderWithTheme } from 'utils/tests/helpers';
 
 import Banner from '.';
@@ -35,11 +34,9 @@ describe('<Banner />', () => {
     renderWithTheme(
       <Banner
         {...props}
-        RibbonComponent={
-          <Ribbon size="small" color="secondary">
-            My Ribbon
-          </Ribbon>
-        }
+        ribbon="My Ribbon"
+        ribbonSize="small"
+        ribbonColor="secondary"
       />,
     );
 
