@@ -10,20 +10,20 @@ export type CheckboxProps = {
 
 const Checkbox = ({
   onCheck,
+  checked = false,
   label,
   labelFor = '',
   labelColor = 'white',
+  value,
+  ...rest
 }: CheckboxProps) => {
-  // controlled component (state)
-  const [checked, setChecked] = useState(false);
+  const [innerChecked, setInnerChecked] = useState(checked);
 
-  const onChange = () => {
-    const status = !checked; // true => false => true
-    setChecked(status);
+  const handleChange = () => {
+    const status = !innerChecked;
+    setInnerChecked(status);
 
-    if (onCheck) {
-      onCheck(status);
-    }
+    !!onCheck && onCheck(status);
   };
 
   return (
@@ -31,8 +31,10 @@ const Checkbox = ({
       <S.Input
         id={labelFor}
         type="checkbox"
-        onChange={onChange}
-        checked={checked}
+        onChange={handleChange}
+        checked={innerChecked}
+        value={value}
+        {...rest}
       />
       {!!label && (
         <S.Label htmlFor={labelFor} labelColor={labelColor}>
