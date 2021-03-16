@@ -40,6 +40,7 @@
     "@babel/preset-typescript": "^7.12.1",
     "@storybook/addon-essentials": "6.0.12",
     "@storybook/react": "6.0.12",
+    "@testing-library/user-event": "^12.8.3",
     "@testing-library/jest-dom": "^5.11.2",
     "@testing-library/react": "^11.1.0",
     "@types/jest": "^26.0.9",
