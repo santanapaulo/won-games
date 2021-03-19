@@ -1,82 +1,87 @@
-import React, { useState } from 'react';
+import Link from 'next/link';
+
+import { useState } from 'react';
+import { Menu2 as MenuIcon } from '@styled-icons/remix-fill/Menu2';
 import { ShoppingCart as ShoppingCartIcon } from '@styled-icons/material-outlined/ShoppingCart';
 import { Search as SearchIcon } from '@styled-icons/material-outlined/Search';
-import { Menu2 as MenuIcon } from '@styled-icons/remix-fill/Menu2';
-import { Close as CloseIcon } from '@styled-icons/remix-fill/Close';
+import { Close as CloseIcon } from '@styled-icons/material-outlined/Close';
 
-import Logo from 'components/Logo';
-
-import * as s from './styles';
 import Button from 'components/Button';
+import Logo from 'components/Logo';
 import MediaMatch from 'components/MediaMatch';
+import * as S from './styles';
 
-type MenuProps = {
+export type MenuProps = {
   username?: string;
 };
 
-const Menu = ({ username, ...rest }: MenuProps) => {
+const Menu = ({ username }: MenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <s.Wrapper {...rest}>
+    <S.Wrapper>
       <MediaMatch lessThan="medium">
-        <s.IconWrapper onClick={() => setIsOpen(true)}>
+        <S.IconWrapper onClick={() => setIsOpen(true)}>
           <MenuIcon aria-label="Open Menu" />
-        </s.IconWrapper>
+        </S.IconWrapper>
       </MediaMatch>
 
-      <s.LogoWrapper>
-        <Logo hideTitle />
-      </s.LogoWrapper>
+      <S.LogoWrapper>
+        <Logo hideOnMobile />
+      </S.LogoWrapper>
 
       <MediaMatch greaterThan="medium">
-        <s.MenuNav>
-          <s.MenuLink href="#">Home</s.MenuLink>
-          <s.MenuLink href="#">Explorer</s.MenuLink>
-        </s.MenuNav>
+        <S.MenuNav>
+          <S.MenuLink href="#">Home</S.MenuLink>
+          <S.MenuLink href="#">Explore</S.MenuLink>
+        </S.MenuNav>
       </MediaMatch>
 
-      <s.MenuGroup>
-        <s.IconWrapper>
+      <S.MenuGroup>
+        <S.IconWrapper>
           <SearchIcon aria-label="Search" />
-        </s.IconWrapper>
-        <s.IconWrapper>
-          <ShoppingCartIcon aria-label="Open shopping cart" />
-        </s.IconWrapper>
+        </S.IconWrapper>
+        <S.IconWrapper>
+          <ShoppingCartIcon aria-label="Open Shopping Cart" />
+        </S.IconWrapper>
         {!username && (
           <MediaMatch greaterThan="medium">
-            <Button>Sign in</Button>
+            <Link href="/sign-in" passHref>
+              <Button as="a">Sign in</Button>
+            </Link>
           </MediaMatch>
         )}
-      </s.MenuGroup>
+      </S.MenuGroup>
 
-      <s.MenuFull isOpen={isOpen} aria-hidden={!isOpen}>
-        <CloseIcon aria-label="close menu" onClick={() => setIsOpen(false)} />
-        <s.MenuNav>
-          <s.MenuLink href="#">Home</s.MenuLink>
-          <s.MenuLink href="#">Explorer</s.MenuLink>
+      <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
+        <CloseIcon aria-label="Close Menu" onClick={() => setIsOpen(false)} />
+        <S.MenuNav>
+          <S.MenuLink href="#">Home</S.MenuLink>
+          <S.MenuLink href="#">Explore</S.MenuLink>
 
           {!!username && (
             <>
-              <s.MenuLink href="#">My account</s.MenuLink>
-              <s.MenuLink href="#">Wishlist</s.MenuLink>
+              <S.MenuLink href="#">My account</S.MenuLink>
+              <S.MenuLink href="#">Wishlist</S.MenuLink>
             </>
           )}
-        </s.MenuNav>
+        </S.MenuNav>
 
         {!username && (
-          <s.RegisterBox>
-            <Button fullWidth size="large">
-              Log in now
-            </Button>
+          <S.RegisterBox>
+            <Link href="/sign-in" passHref>
+              <Button fullWidth size="large" as="a">
+                Sign in
+              </Button>
+            </Link>
             <span>or</span>
-            <s.CreateAccount href="#" title="Sign Up">
-              Sign Up
-            </s.CreateAccount>
-          </s.RegisterBox>
+            <Link href="/sign-up" passHref>
+              <S.CreateAccount title="Sign Up">Sign Up</S.CreateAccount>
+            </Link>
+          </S.RegisterBox>
         )}
-      </s.MenuFull>
-    </s.Wrapper>
+      </S.MenuFull>
+    </S.Wrapper>
   );
 };
 
