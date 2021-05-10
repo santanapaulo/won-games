@@ -29,7 +29,7 @@ const Menu = ({ username }: MenuProps) => {
       <S.LogoWrapper>
         <Link href="/" passHref>
           <a>
-            <Logo hideOnMobile />
+            <Logo hideTitle />
           </a>
         </Link>
       </S.LogoWrapper>
