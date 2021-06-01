@@ -4,6 +4,7 @@ import * as S from './styles';
 export type CheckboxProps = {
   onCheck?: (status: boolean) => void;
   label?: string;
+  checked?: boolean;
   labelFor?: string;
   labelColor?: 'white' | 'black';
 } & InputHTMLAttributes<HTMLInputElement>;
