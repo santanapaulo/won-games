@@ -9,6 +9,10 @@
     "lint": "eslint src --max-warnings=0",
     "test": "jest",
     "test:watch": "yarn test --watch",
+    "schema:download": "apollo client:download-schema --endpoint=http://localhost:1337/graphql schema-temp.gql",
+    "schema:convert": "node convertToNonNull.js",
+    "codegen": "apollo codegen:generate --target typescript --excludes=node_modules/ --includes=src/graphql/**/*.ts --localSchemaFile schema.gql --tagName=gql --outputFlat src/graphql/generated",
+    "types:generate": "yarn schema:download && yarn schema:convert && yarn codegen",
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -s ./public"
   },
@@ -41,6 +45,7 @@
     "styled-media-query": "^2.1.2"
   },
   "devDependencies": {
+    "apollo": "^2.32.1",
     "@babel/core": "^7.12.3",
     "@babel/preset-typescript": "^7.12.1",
     "@storybook/addon-essentials": "6.0.12",
