@@ -56,7 +56,7 @@ describe('<Checkbox />', () => {
   it('should dispatch onCheck when status changes', async () => {
     const onCheck = jest.fn();
 
-    renderWithTheme(<Checkbox label="Checkbox" onCheck={onCheck} checked />);
+    renderWithTheme(<Checkbox label="Checkbox" onCheck={onCheck} isChecked />);
 
     userEvent.click(screen.getByRole('checkbox'));
     await waitFor(() => {

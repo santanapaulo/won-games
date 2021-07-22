@@ -4,21 +4,21 @@ import * as S from './styles';
 export type CheckboxProps = {
   onCheck?: (status: boolean) => void;
   label?: string;
-  checked?: boolean;
+  isChecked?: boolean;
   labelFor?: string;
   labelColor?: 'white' | 'black';
 } & InputHTMLAttributes<HTMLInputElement>;
 
 const Checkbox = ({
   onCheck,
-  checked = false,
+  isChecked = false,
   label,
   labelFor = '',
   labelColor = 'white',
   value,
   ...rest
 }: CheckboxProps) => {
-  const [innerChecked, setInnerChecked] = useState(checked);
+  const [innerChecked, setInnerChecked] = useState(isChecked);
 
   const handleChange = () => {
     const status = !innerChecked;

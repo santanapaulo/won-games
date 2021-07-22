@@ -22,7 +22,7 @@ export const Default: Story<CheckboxProps> = (args) => (
         name="category"
         label="Action"
         labelFor="action"
-        checked
+        isChecked
         {...args}
       />
     </div>
