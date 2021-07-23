@@ -41,10 +41,7 @@ const ExploreSidebar = ({
 
   useEffect(() => {
     onFilter(values);
-    // this method comes from another template
-    // that we don't have access
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values]);
+  }, [values, onFilter]);
 
   const handleRadio = (name: string, value: string | boolean) => {
     setValues((s) => ({ ...s, [name]: value }));

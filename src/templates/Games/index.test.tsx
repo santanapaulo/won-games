@@ -3,7 +3,7 @@ import { MockedProvider } from '@apollo/client/testing';
 
 import { renderWithTheme } from 'utils/tests/helpers';
 import filterItemsMock from 'components/ExploreSidebar/mock';
-import { fetchMoreMock, gamesMock } from './mocks';
+import { fetchMoreMock, gamesMock, noGamesMock } from './mocks';
 
 import Games from '.';
 import userEvent from '@testing-library/user-event';
@@ -28,26 +28,12 @@ jest.mock('templates/Base', () => ({
 }));
 
 describe('<Games />', () => {
-  it('should render loading when starting the template', () => {
-    renderWithTheme(
-      <MockedProvider mocks={[]} addTypename={false}>
-        <Games filterItems={filterItemsMock} />
-      </MockedProvider>,
-    );
-
-    expect(screen.getByText(/loading.../i)).toBeInTheDocument();
-  });
-
   it('should render sections', async () => {
     renderWithTheme(
       <MockedProvider mocks={[gamesMock]} addTypename={false}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>,
     );
-
-    // it starts without data
-    // shows loading
-    expect(screen.getByText(/loading.../i)).toBeInTheDocument();
 
     // we wait until we have data to get the elements
     // get => tem certeza do elemento
@@ -63,7 +49,7 @@ describe('<Games />', () => {
 
   it('should render empty when no games found', async () => {
     renderWithTheme(
-      <MockedProvider mocks={[]} addTypename={false}>
+      <MockedProvider mocks={[noGamesMock]} addTypename={false}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>,
     );
