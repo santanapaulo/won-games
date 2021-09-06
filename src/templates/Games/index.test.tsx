@@ -20,6 +20,13 @@ useRouter.mockImplementation(() => ({
   route: '/',
 }));
 
+jest.mock('next/link', () => ({
+  __esModule: true,
+  default: function Mock({ children }: { children: React.ReactNode }) {
+    return <div>{children}</div>;
+  },
+}));
+
 jest.mock('templates/Base', () => ({
   __esModule: true,
   default: function Mock({ children }: { children: React.ReactNode }) {
