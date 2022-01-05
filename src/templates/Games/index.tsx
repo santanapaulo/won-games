@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import { ParsedUrlQueryInput } from 'querystring';
 import { useRouter } from 'next/router';
 
@@ -34,22 +33,19 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
     },
   });
 
-  const handleFilter = useCallback(
-    (items: ParsedUrlQueryInput) => {
-      push({
-        pathname: '/games',
-        query: items,
-      });
-      return;
-    },
-    [push],
-  );
-
-  if (!data) return <></>;
+  if (!data) return <p>loading...</p>;
 
   const { games, gamesConnection } = data;
 
   const hasMoreGames = games.length < (gamesConnection?.values?.length || 0);
+
+  const handleFilter = (items: ParsedUrlQueryInput) => {
+    push({
+      pathname: '/games',
+      query: items,
+    });
+    return;
+  };
 
   const handleShowMore = () => {
     fetchMore({ variables: { limit: 15, start: data?.games.length } });
@@ -73,6 +69,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
               <Grid>
                 {data?.games.map((game) => (
                   <GameCard
+                    id={game.id}
                     key={game.slug}
                     title={game.name}
                     slug={game.slug}

@@ -12,6 +12,10 @@ exports[`<TextField /> Renders with error 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   background: #EAEAEA;
   border-radius: 0.2rem;
   padding: 0 1.6rem;
@@ -35,6 +39,12 @@ exports[`<TextField /> Renders with error 1`] = `
   width: 100%;
 }
 
+.c8:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 2.4rem #EAEAEA inset;
+  -webkit-filter: none;
+  filter: none;
+}
+
 .c2 {
   font-size: 1.4rem;
   color: #030517;
@@ -46,7 +56,6 @@ exports[`<TextField /> Renders with error 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 2.2rem;
   color: #8F8F8F;
   -webkit-order: 0;
   -ms-flex-order: 0;
@@ -54,7 +63,8 @@ exports[`<TextField /> Renders with error 1`] = `
 }
 
 .c6 > svg {
-  width: 100%;
+  width: 2.2rem;
+  height: 100%;
 }
 
 .c9 {
